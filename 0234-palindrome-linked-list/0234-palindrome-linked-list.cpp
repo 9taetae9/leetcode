@@ -11,46 +11,41 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        if (!head || !head->next) return true;
-
-        // Find middle of the linked list
         ListNode* slow = head;
         ListNode* fast = head;
-        while (fast->next && fast->next->next) {
+        while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
 
         // Reverse the second half
-        slow->next = reverseList(slow->next);
+        slow = reverseList(slow);
 
         // Compare the first half and reversed second half
-        ListNode* firstHalf = head;
-        ListNode* secondHalf = slow->next;
-        while (secondHalf) {
-            if (firstHalf->val != secondHalf->val) {
-                // (Optional) Restore original linked list structure
-                slow->next = reverseList(slow->next);
-                return false;
-            }
-            firstHalf = firstHalf->next;
-            secondHalf = secondHalf->next;
+        fast = head;
+        while (slow) {
+            if (fast->val != slow->val) return false;
+            fast = fast->next;
+            slow = slow->next;
         }
 
-        // (Optional) Restore original linked list structure
-        slow->next = reverseList(slow->next);
         return true;
     }
 
     ListNode* reverseList(ListNode* head) {
         ListNode* prev = nullptr;
-        ListNode* curr = head;
-        while (curr) {
-            ListNode* nextTemp = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = nextTemp;
+        while (head) {
+            ListNode* nextTemp = head->next;
+            head->next = prev;
+            prev = head;
+            head = nextTemp;
         }
         return prev;
     }
 };
+
+
+
+
+
+
