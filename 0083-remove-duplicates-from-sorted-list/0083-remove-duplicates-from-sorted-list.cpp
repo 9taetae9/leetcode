@@ -11,6 +11,8 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
+        if (!head) return NULL;  // Check for empty list
+        
         set<int> s;
         ListNode* newHead = head;
         ListNode* newHead2 = newHead;
@@ -28,9 +30,7 @@ public:
             newHead = newHead->next;
         }
         
-        if (prev) {
-            prev->next = NULL;
-        }
+        prev->next = NULL;
         
         return newHead2;
     }
