@@ -20,7 +20,7 @@ public:
             if(curr->val==val){
                 prev->next=curr->next;
             }else prev=curr;
-            curr=curr->next;
+            curr=prev->next;
         }
 
         ListNode* newHead=dummy->next;
