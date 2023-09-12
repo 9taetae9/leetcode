@@ -13,25 +13,22 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         if (!head) return NULL;  // Check for empty list
         
-        set<int> s;
-        ListNode* newHead = head;
-        ListNode* newHead2 = newHead;
-        
-        // Insert all values into the set
-        while(head){
-            s.insert(head->val);
-            head = head->next;
+        ListNode* current = head;
+        ListNode* nextDistinct = head;
+
+        while (nextDistinct) {
+            if (current->val != nextDistinct->val) {
+                current->next = nextDistinct;
+                current = nextDistinct;
+            }
+            nextDistinct = nextDistinct->next;
+        }
+
+        // Terminate the list
+        if (current) {
+            current->next = NULL;
         }
         
-        ListNode* prev = nullptr;
-        for(auto e: s){
-            newHead->val = e;
-            prev = newHead;
-            newHead = newHead->next;
-        }
-        
-        prev->next = NULL;
-        
-        return newHead2;
+        return head;
     }
 };
