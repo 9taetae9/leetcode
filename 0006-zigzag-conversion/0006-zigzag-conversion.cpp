@@ -1,11 +1,13 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        vector<string> rows(numRows,"");
+        if(s.length()==1||numRows==1) return s;
+        
+        vector<string> rows(numRows);
         bool goingdown = false;
         int curr=0;
-        if(s.length()==1||numRows==1) return s;
-         
+        
+
         for(auto c : s)
         {
             rows[curr]+=c;
