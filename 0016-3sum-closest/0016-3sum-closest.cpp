@@ -28,3 +28,6 @@ public:
         return result;
     }
 };
+//For each i, maintain two pointers left and right and move them based on the sum.
+//If the sum is greater than the target, move the right pointer to the left (i.e., decrement right) to try and get a smaller sum.
+//If the sum is less than the target, move the left pointer to the right (i.e., increment left) to try and get a bigger sum.
