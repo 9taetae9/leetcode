@@ -12,12 +12,13 @@ public:
             while(left<right){
                 int sum=nums[i]+nums[left]+nums[right];
                 if(sum==0){
-                tri_v.push_back(nums[i]);
-                tri_v.push_back(nums[left]);
-                tri_v.push_back(nums[right]);
+                tri_set.insert({nums[i],nums[left],nums[right]});
+                //tri_v.push_back(nums[i]);
+                //tri_v.push_back(nums[left]);
+                //tri_v.push_back(nums[right]);
                 //sort(tri_v.begin(), tri_v.end());
-                tri_set.insert(tri_v);
-                tri_v.clear();
+                //tri_set.insert(tri_v);
+                //tri_v.clear();
 
                 //while(left<right && nums[left]==nums[left+1]) left++;
                 //while(left<right && nums[right]==nums[right-1]) right--;
