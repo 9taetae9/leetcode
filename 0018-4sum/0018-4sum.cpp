@@ -1,3 +1,6 @@
+//Handled duplicates inside the two-pointer while loop.
+//O(n^3)
+
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
@@ -19,7 +22,7 @@ public:
                 while (left < right) {
                     long long int sum = static_cast<long long int>(nums[i]) + nums[j] + nums[left] + nums[right];
                     if (sum == target) {
-                        result.push_back({nums[i], nums[j], nums[left], nums[right]});
+                        result.push_back({nums[i], nums[j], nums[left], nums[right]});//directly added to the result once a quadruplet is found. (Better than using set)
                         // Avoid duplicate numbers in the 3rd and 4th positions
                         while (left < right && nums[left] == nums[left + 1]) ++left;
                         while (left < right && nums[right] == nums[right - 1]) --right;
