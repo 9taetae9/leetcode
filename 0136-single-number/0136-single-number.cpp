@@ -8,3 +8,7 @@ public:
         return output;
     }
 };
+
+//xor(^연산자)
+//a ^ 0 = a
+//a ^ a = 0
