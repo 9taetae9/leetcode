@@ -1,6 +1,3 @@
-//Handled duplicates inside the two-pointer while loop.
-//O(n^3)
-
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
@@ -22,7 +19,7 @@ public:
                 while (left < right) {
                     long long int sum = static_cast<long long int>(nums[i]) + nums[j] + nums[left] + nums[right];
                     if (sum == target) {
-                        result.push_back({nums[i], nums[j], nums[left], nums[right]});//directly added to the result once a quadruplet is found. (Better than using set)
+                        result.push_back({nums[i], nums[j], nums[left], nums[right]});
                         // Avoid duplicate numbers in the 3rd and 4th positions
                         while (left < right && nums[left] == nums[left + 1]) ++left;
                         while (left < right && nums[right] == nums[right - 1]) --right;
@@ -38,3 +35,7 @@ public:
         return result;
     }
 };
+//[ <===1st pos===>  ][<==== 2nd pos  ===> ][ <=== 3rd pos ===> ][ <=== 4th pos ===>]
+//[ 연속된 동일 한  값 ][ 연속된 동일 한  값 ][ 연속된 동일 한  값 ][ 연속된 동일 한  값 ]
+//이를 skip한다면 Set을 사용할 이유가 없음!
+//for루프는 continue로 중복 방지! while 루프 (left, right는 left++, right--해가며 중복 방지)
