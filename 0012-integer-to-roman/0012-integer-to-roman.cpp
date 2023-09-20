@@ -5,19 +5,23 @@ public:
         string temp;
         int pos=0;
         char c[4]={'I','X','C','M'};
+        
         while(num){
             int n = num%10; pos++;  //일의 자리부터 구하기 시작 일,십,백,천 1,2,3,4
             if(n==4||n==9){
+                temp+=c[pos-1];
                 if(n==4){ 
-                    if(pos==1) v.push_back("IV");
-                    else if(pos==2) v.push_back("XL");
-                    else v.push_back("CD");
+                    if(pos==1) temp+='V';
+                    else if(pos==2) temp+='L';
+                    else temp+='D';
                 }
                 else{  
-                    if(pos==1) v.push_back("IX");
-                    else if(pos==2) v.push_back("XC");
-                    else v.push_back("CM");
+                    if(pos==1) temp+='X';
+                    else if(pos==2) temp+='C';
+                    else temp+='M';
                 }
+                v.push_back(temp);
+                temp.clear();
             }
             else if(0<=n&&n<=3){
                 int i=0;
