@@ -1,33 +1,24 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> permutations = new ArrayList<>();
-        backtrack(nums, permutations, 0);
-        
+        backtrack(nums, new ArrayList<>(), permutations );
         return permutations;
     }
-    
-    public void backtrack(int[] nums, List<List<Integer>> permutations, int start){
-        if(start == nums.length){  // Goal reached
-            // List<Integer> permutation = new ArrayList<>();
-            // for(int e : nums){
-            //     permutation.add(e);
-            // }
-            
-            List<Integer> permutation = Arrays.stream(nums).boxed().collect(Collectors.toList());
-            permutations.add(new ArrayList<>(permutation));  //add solution to result
+
+    public void backtrack(int[] nums, List<Integer> current, List<List<Integer>> permutations){
+        if(current.size() == nums.length ){ //goal reached
+            permutations.add(new ArrayList<>(current));
             return ;
         }
-        
-        for(int i=start; i<nums.length; i++){// nums.length => number of choices(NB_CHOICES)
-            swap(nums, start, i);  //make choice
-            backtrack(nums,permutations, start+1); //backtrack
-            swap(nums, start, i);  //undo choice
+
+        for(int i=0; i<nums.length; i++){
+            if(current.contains(nums[i])){
+                continue;
+            }
+            
+            current.add(nums[i]);
+            backtrack(nums, current, permutations);
+            current.remove(current.size()-1);
         }
-    }
-    
-    public void swap(int[] nums, int i, int j){
-        int temp = nums[i];
-         nums[i] = nums[j];
-         nums[j] = temp;
     }
 }
