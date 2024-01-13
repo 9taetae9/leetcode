@@ -1,25 +1,22 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        return removeHash(s).equals(removeHash(t));
+        return backspaceResult(s).equals(backspaceResult(t));
     }
 
-    public static String removeHash(String s){
-        StringBuilder ans = new StringBuilder();
+    public static String backspaceResult(String s){
+        Stack<Character> st = new Stack<>();
 
-        int hashCount=0;
-        for(int i=s.length()-1; i>=0; i--){
-            if(hashCount>0 && s.charAt(i)!='#'){
-                hashCount--;
-                continue;
-            }
-
-            if(s.charAt(i) == '#'){
-                hashCount++;
-            }else{
-                ans.insert(0,s.charAt(i));
-            }
-
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i) != '#'){
+                st.push(s.charAt(i));
+            }else if(!st.isEmpty()){
+                st.pop();
+            }   
         }
-        return ans.toString();
+        String s_new = "";
+        while(!st.isEmpty()){
+            s_new += st.pop();
+        }
+        return s_new;
     }
 }
