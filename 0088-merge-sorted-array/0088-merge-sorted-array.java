@@ -1,27 +1,22 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(m == 0){ //nums1 []일때
-            System.arraycopy(nums2, 0, nums1, 0, n);
-            return ;
-        }
-        if(n == 0){ //nums1 []아니고 nums2 []일때
-            return ;
-        }
-        
         int[] newNum = new int[m+n];
-        int p = 0; int q = 0;
-        for(int i=0; i<newNum.length; i++){
-            if(p >= m) {
-                newNum[i] = nums2[q++];
-            }else if(q >= n){
-                newNum[i] = nums1[p++];
-            }else{
-                newNum[i] = nums1[p] < nums2[q] ? nums1[p++] : nums2[q++];
-            }
+        int idx1 = 0; int idx2 = 0;
+        int idx = 0;
+
+        while(idx1 < m && idx2 < n){
+            newNum[idx++] = nums1[idx1] < nums2[idx2] ? nums1[idx1++] : nums2[idx2++];
         }
-        
-        System.arraycopy(newNum, 0, nums1, 0, m + n);
-        return ;
+
+        while(idx1 < m){
+            newNum[idx++] = nums1[idx1++];
+        }
+
+        while(idx2 < n){
+            newNum[idx++] = nums2[idx2++];
+        }        
+
+        System.arraycopy(newNum, 0, nums1, 0, m+n);
     }
 }
 
