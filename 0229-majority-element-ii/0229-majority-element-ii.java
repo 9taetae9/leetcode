@@ -8,7 +8,7 @@ class Solution {
 
         int threshold = nums.length / 3;
 
-        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,Integer> map = new HashMap<>(nums.length * 2/3 + 1);
 
         for(int num : nums){
             map.merge(num, 1, Integer::sum); //put, getOrDefault 동시 처리
