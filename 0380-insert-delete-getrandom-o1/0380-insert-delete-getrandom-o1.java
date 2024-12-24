@@ -31,11 +31,14 @@ class RandomizedSet {
         int lastVal = values.get(values.size()-1); //마지막 원소 값
 
         values.set(removeIndex, lastVal); // 지울 인덱스 자리에 마지막 원소 대입
-        valueToIndex.put(lastVal, removeIndex); // 
+        
         
         values.remove(values.size()-1); // 마지막 원소 삭제
         valueToIndex.remove(val); // map에서 val 지우기
         
+        if(lastVal != val){
+            valueToIndex.put(lastVal, removeIndex); 
+        }
         return true;
     }
     
