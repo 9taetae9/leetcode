@@ -11,6 +11,7 @@ class Solution {
             if(square == x){
                 return mid;
             }else if(square < x){
+                res = mid;
                 start = mid + 1;
             }else{
                 end = mid - 1;
