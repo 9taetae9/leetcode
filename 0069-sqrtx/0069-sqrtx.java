@@ -6,6 +6,7 @@ class Solution {
         int res = 0;
         while(start <= end){
             int mid = start + (end - start) / 2;
+             
             long square = (long)mid * mid;
             
             if(square == x){
