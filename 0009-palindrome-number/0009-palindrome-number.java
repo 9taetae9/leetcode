@@ -6,8 +6,7 @@ class Solution {
         int reversed = 0;
 
         while(original != 0){
-            int digit = original % 10;
-            reversed = 10 * reversed + digit;
+            reversed = 10 * reversed + original % 10;
             original /= 10;
         }
 
