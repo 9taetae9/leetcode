@@ -6,7 +6,7 @@ class Solution {
                 digits[i] = 0;
             }else{
                 ++digits[i];
-                break;
+                return digits;
             }
         }
         if(digits[0] == 0){
