@@ -10,6 +10,6 @@ class Solution {
             i++; j--;
         }
 
-        return i >= j && s.charAt(i) == s.charAt(j);
+        return i >= j;
     }
 }
