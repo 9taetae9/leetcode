@@ -6,8 +6,8 @@ class Solution {
             ++alpha[c-'a'];
         }
         for(char c : ransomNote.toCharArray()){
+            if(alpha[c-'a'] == 0) return false;
             --alpha[c-'a'];
-            if(alpha[c-'a']<0) return false;
         }
 
         return true;
