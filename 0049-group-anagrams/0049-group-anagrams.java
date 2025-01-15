@@ -13,9 +13,8 @@ class Solution {
                 sorted.append("#").append(freq);
             }
             
-            String key = new String(sorted);
-            map.putIfAbsent(key, new ArrayList<>());
-            map.get(key).add(str);
+            map.putIfAbsent(sorted.toString(), new ArrayList<>());
+            map.get(sorted.toString()).add(str);
         }
 
         return new ArrayList<>(map.values());
