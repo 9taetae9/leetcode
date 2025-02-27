@@ -14,23 +14,22 @@
  * }
  */
 class Solution {
-    TreeNode prev = null;
-    int min = Integer.MAX_VALUE;
-    
+    List<Integer> list = new ArrayList<>();
+    int min = 100001;
     public int getMinimumDifference(TreeNode root) {
-        if(root == null) return min;
-        
-        getMinimumDifference(root.left); // 젤 왼쪽까지 파고들기
-        
-        //차이 구하기
-        if(prev != null){
-            min = Math.min(min, root.val - prev.val);
+        inOrderTraverse(root);
+        for(int i=0; i<list.size()-1; i++){
+            min = Math.min(min, list.get(i+1)-list.get(i));
         }
-        
-        prev = root;
-        
-        getMinimumDifference(root.right); // 오른쪽 체크
-        
+
         return min;
+    }
+
+    private void inOrderTraverse(TreeNode node){
+        if(node == null) return ;
+
+        inOrderTraverse(node.left);
+        list.add(node.val);
+        inOrderTraverse(node.right);
     }
 }
