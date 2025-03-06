@@ -14,8 +14,6 @@ class Solution {
 
             if(maxPos >= nums.length-1) return true;
         }
-
-        return false;
-        
+        return true;
     }
 }
